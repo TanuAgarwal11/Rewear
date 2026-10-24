@@ -1,0 +1,225 @@
+
+.product-details-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 5%;
+  color: #292a24;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #666b56;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.product-details-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.product-details-image {
+  background: #f0eee7;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-details-image img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-details-info {
+  padding: 12px 0;
+}
+
+.product-details-brand {
+  color: #777b62;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.product-details-info h1 {
+  margin: 12px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.product-details-category {
+  color: #77776e;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.product-details-price {
+  margin: 24px 0;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.product-details-price span {
+  color: #77776e;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.product-details-specs {
+  margin: 28px 0;
+  padding: 20px 0;
+  border-top: 1px solid #e5e2d9;
+  border-bottom: 1px solid #e5e2d9;
+}
+
+.product-details-specs p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.rental-panel {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #dedbd1;
+}
+
+.rental-panel h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.rental-panel-subtitle,
+.product-details-note {
+  color: #77776e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.rental-date-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.rental-date-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rental-date-fields input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #d8d5ca;
+  border-radius: 0;
+  background: #fffefa;
+  color: #292a24;
+  font: inherit;
+}
+
+.rental-date-fields input:focus {
+  outline: 1px solid #777b62;
+  border-color: #777b62;
+}
+
+.rental-price-summary {
+  padding: 20px 0;
+  border-top: 1px solid #e5e2d9;
+}
+
+.rental-price-summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+
+.rental-price-summary span {
+  color: #6d6e65;
+}
+
+.rental-price-summary strong {
+  text-align: right;
+  font-weight: 600;
+}
+
+.rental-price-summary .rental-total {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #dedbd1;
+  font-size: 16px;
+}
+
+.rent-button {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid #62684d;
+  border-radius: 0;
+  background: #62684d;
+  color: #fffefa;
+  text-align: center;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.rent-button:hover:not(:disabled) {
+  background: #4e543d;
+}
+
+.rent-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.booking-message {
+  margin-top: 14px;
+  color: #62684d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .product-details-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+    }
+  }
+
+.product-details-image {
+  width: 100%;
+  max-width: 560px;
+  height: 620px;
+  overflow: hidden;
+  background: #f3f0e9;
+}
+
+.product-details-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+  .rental-date-fields {
+    grid-template-columns: 1fr;
+  }
+}
