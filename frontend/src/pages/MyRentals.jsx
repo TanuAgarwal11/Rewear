@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
@@ -51,10 +50,7 @@ function MyRentals() {
 
         const rentalList = Array.isArray(data)
           ? data
-          : data.rentals ??
-            data.data?.rentals ??
-            data.data ??
-            [];
+          : (data.rentals ?? data.data?.rentals ?? data.data ?? []);
 
         if (!Array.isArray(rentalList)) {
           throw new Error("Unexpected rentals response from server.");
@@ -67,7 +63,7 @@ function MyRentals() {
         setError(
           err.response?.data?.message ||
             err.message ||
-            "Unable to load your rentals."
+            "Unable to load your rentals.",
         );
       } finally {
         setLoading(false);
@@ -78,15 +74,15 @@ function MyRentals() {
   }, []);
 
   const pendingCount = rentals.filter(
-    (rental) => rental.status === "PENDING"
+    (rental) => rental.status === "PENDING",
   ).length;
 
   const activeCount = rentals.filter((rental) =>
-    ["CONFIRMED", "ACTIVE", "RETURN_REQUESTED"].includes(rental.status)
+    ["CONFIRMED", "ACTIVE", "RETURN_REQUESTED"].includes(rental.status),
   ).length;
 
   const completedCount = rentals.filter((rental) =>
-    ["COMPLETED", "RETURNED"].includes(rental.status)
+    ["COMPLETED", "RETURNED"].includes(rental.status),
   ).length;
 
   return (
@@ -96,9 +92,7 @@ function MyRentals() {
       <main className="my-rentals-page">
         <section className="my-rentals-intro">
           <div className="my-rentals-header">
-            <p className="my-rentals-eyebrow">
-              YOUR REWEAR ACCOUNT
-            </p>
+            <p className="my-rentals-eyebrow">YOUR REWEAR ACCOUNT</p>
 
             <h1>
               Your wardrobe,
@@ -107,9 +101,8 @@ function MyRentals() {
             </h1>
 
             <p className="my-rentals-description">
-              All your rented pieces, in one place.
-              Keep track of every occasion, from your first
-              request to the final return.
+              All your rented pieces, in one place. Keep track of every
+              occasion, from your first request to the final return.
             </p>
           </div>
 
@@ -120,10 +113,7 @@ function MyRentals() {
         </section>
 
         {!loading && !error && (
-          <section
-            className="rental-overview"
-            aria-label="Rental overview"
-          >
+          <section className="rental-overview" aria-label="Rental overview">
             <div className="rental-overview-heading">
               <p className="section-eyebrow">AT A GLANCE</p>
               <span>Your rental overview</span>
@@ -134,36 +124,28 @@ function MyRentals() {
                 <span className="rental-stat-number">
                   {rentals.length.toString().padStart(2, "0")}
                 </span>
-                <span className="rental-stat-label">
-                  Total rentals
-                </span>
+                <span className="rental-stat-label">Total rentals</span>
               </article>
 
               <article className="rental-stat">
                 <span className="rental-stat-number">
                   {pendingCount.toString().padStart(2, "0")}
                 </span>
-                <span className="rental-stat-label">
-                  Awaiting approval
-                </span>
+                <span className="rental-stat-label">Awaiting approval</span>
               </article>
 
               <article className="rental-stat">
                 <span className="rental-stat-number">
                   {activeCount.toString().padStart(2, "0")}
                 </span>
-                <span className="rental-stat-label">
-                  In progress
-                </span>
+                <span className="rental-stat-label">In progress</span>
               </article>
 
               <article className="rental-stat">
                 <span className="rental-stat-number">
                   {completedCount.toString().padStart(2, "0")}
                 </span>
-                <span className="rental-stat-label">
-                  Completed
-                </span>
+                <span className="rental-stat-label">Completed</span>
               </article>
             </div>
           </section>
@@ -181,10 +163,7 @@ function MyRentals() {
             <p className="section-eyebrow">SOMETHING WENT WRONG</p>
             <h2>We couldn't load your rentals.</h2>
             <p>{error}</p>
-            <button
-              type="button"
-              onClick={() => window.location.reload()}
-            >
+            <button type="button" onClick={() => window.location.reload()}>
               Try again
             </button>
           </div>
@@ -196,22 +175,16 @@ function MyRentals() {
               R
             </div>
 
-            <p className="rentals-empty-eyebrow">
-              A LITTLE INSPIRATION
-            </p>
+            <p className="rentals-empty-eyebrow">A LITTLE INSPIRATION</p>
 
             <h2>Your next favourite look awaits.</h2>
 
             <p>
-              You haven't requested a rental yet. Explore the
-              collection and find something special for your
-              next occasion.
+              You haven't requested a rental yet. Explore the collection and
+              find something special for your next occasion.
             </p>
 
-            <Link
-              to="/collections"
-              className="rentals-shop-button"
-            >
+            <Link to="/collections" className="rentals-shop-button">
               Explore the collection <span>↗</span>
             </Link>
           </section>
@@ -227,27 +200,21 @@ function MyRentals() {
 
               <span className="rentals-count">
                 {rentals.length.toString().padStart(2, "0")}
-                <span>
-                  {rentals.length === 1 ? " piece" : " pieces"}
-                </span>
+                <span>{rentals.length === 1 ? " piece" : " pieces"}</span>
               </span>
             </div>
 
             <div className="rentals-list-items">
               {rentals.map((rental) => {
                 const product =
-                  rental.product &&
-                  typeof rental.product === "object"
+                  rental.product && typeof rental.product === "object"
                     ? rental.product
                     : null;
 
                 const status = getStatusClass(rental.status);
 
                 return (
-                  <article
-                    className="rental-card"
-                    key={rental._id}
-                  >
+                  <article className="rental-card" key={rental._id}>
                     <div className="rental-card-image">
                       {product?.images?.[0] ? (
                         <img
@@ -256,14 +223,10 @@ function MyRentals() {
                           loading="lazy"
                         />
                       ) : (
-                        <span className="rental-image-placeholder">
-                          REWEAR
-                        </span>
+                        <span className="rental-image-placeholder">REWEAR</span>
                       )}
 
-                      <span className="rental-image-caption">
-                        YOUR RENTAL
-                      </span>
+                      <span className="rental-image-caption">YOUR RENTAL</span>
                     </div>
 
                     <div className="rental-card-content">
@@ -273,12 +236,13 @@ function MyRentals() {
                             {product?.brand || "REWEAR EDIT"}
                           </p>
 
-                          <h3>
-                            {product?.name || "Rental request"}
-                          </h3>
+                          <h3>{product?.name || "Rental request"}</h3>
 
                           <p className="rental-reference">
-                            Ref. {String(rental._id || "").slice(-8).toUpperCase()}
+                            Ref.{" "}
+                            {String(rental._id || "")
+                              .slice(-8)
+                              .toUpperCase()}
                           </p>
                         </div>
 
@@ -296,9 +260,7 @@ function MyRentals() {
                             <span className="detail-icon">↗</span>
                             Rental starts
                           </span>
-                          <strong>
-                            {formatDate(rental.startDate)}
-                          </strong>
+                          <strong>{formatDate(rental.startDate)}</strong>
                         </div>
 
                         <div className="rental-detail">
@@ -306,36 +268,26 @@ function MyRentals() {
                             <span className="detail-icon">↙</span>
                             Return date
                           </span>
-                          <strong>
-                            {formatDate(rental.endDate)}
-                          </strong>
+                          <strong>{formatDate(rental.endDate)}</strong>
                         </div>
                       </div>
 
                       <div className="rental-card-bottom">
                         <div className="rental-price-item">
                           <span>Rental cost</span>
-                          <strong>
-                            {formatPrice(rental.totalPrice)}
-                          </strong>
+                          <strong>{formatPrice(rental.totalPrice)}</strong>
                         </div>
 
                         <div className="rental-price-item">
                           <span>Security deposit</span>
-                          <strong>
-                            {formatPrice(rental.securityDeposit)}
-                          </strong>
+                          <strong>{formatPrice(rental.securityDeposit)}</strong>
                         </div>
 
                         <Link
-                          to={
-                            product?._id
-                              ? `/products/${product._id}`
-                              : "/collections"
-                          }
+                          to={`/my-rentals/${rental._id}`}
                           className="rental-view-link"
                         >
-                          View piece <span>↗</span>
+                          View rental details <span>↗</span>
                         </Link>
                       </div>
                     </div>
@@ -346,9 +298,7 @@ function MyRentals() {
 
             <div className="rentals-list-footer">
               <span>GOOD STYLE, CONSIDERED CHOICES.</span>
-              <Link to="/collections">
-                Discover more pieces ↗
-              </Link>
+              <Link to="/collections">Discover more pieces ↗</Link>
             </div>
           </section>
         )}

@@ -5,6 +5,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyRentals from "./pages/MyRentals";
+import RentalDetails from "./pages/RentalDetails";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/my-rentals" element={<MyRentals />} />
+      <Route path="/my-rentals/:id" element={<RentalDetails />} />
     </Routes>
   );
 }
 
 export default App;
+
