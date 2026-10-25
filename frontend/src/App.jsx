@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyRentals from "./pages/MyRentals";
 import RentalDetails from "./pages/RentalDetails";
+import LenderDashboard from "./pages/LenderDashboard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/my-rentals" element={<MyRentals />} />
       <Route path="/my-rentals/:id" element={<RentalDetails />} />
+      <Route path="/lender-dashboard" element={<LenderDashboard />} />
     </Routes>
   );
 }

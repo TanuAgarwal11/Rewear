@@ -43,6 +43,27 @@ export const getProducts = async (req, res) => {
   }
 };
 
+// GET PRODUCTS LISTED BY THE LOGGED-IN LENDER
+
+export const getMyProducts = async (req, res) => {
+  try {
+    const products = await Product.find({
+      owner: req.user._id,
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: products.length,
+      products,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 // GET SINGLE PRODUCT
 
 export const getProductById = async (req, res) => {

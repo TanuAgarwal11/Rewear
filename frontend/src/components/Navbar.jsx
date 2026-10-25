@@ -13,9 +13,21 @@ function Navbar() {
         </Link>
 
         <nav className="nav-links" aria-label="Main navigation">
-          <NavLink to="/" end>Home</NavLink>
-          <NavLink to="/collections">Collections</NavLink>
-          <Link to="/my-rentals">My Rentals</Link>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+
+          <NavLink to="/collections">
+            Collections
+          </NavLink>
+
+          <NavLink to="/my-rentals">
+            My Rentals
+          </NavLink>
+
+          <NavLink to="/lender-dashboard">
+            Lender Dashboard
+          </NavLink>
         </nav>
 
         <div className="nav-actions">
